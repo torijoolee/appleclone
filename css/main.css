@@ -1,0 +1,48 @@
+@charset 'utf-8';
+html {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  color: rgb(29, 29, 31);
+  letter-spacing: -0.05em;
+  background-color: white;
+}
+a {
+  color: rgb(29, 29, 31);
+}
+p {
+  line-height: 1.6;
+}
+.global__nav {
+  height: 44px;
+}
+.global__nav__links,
+.local__nav__links {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 100%;
+  align-items: center;
+}
+.global__nav__links {
+  justify-content: space-between;
+}
+.product__name {
+  margin-right: auto;
+}
+.local__nav {
+  height: 52px;
+  border-bottom: 1px solid #ddd;
+}
+.local__nav__links a:not(.product__name) {
+  margin-left: 2em;
+  font-size: 0.8rem;
+}
+.local__nav__links .product__name {
+  font-size: 1.4rem;
+  font-weight: 900;
+}
