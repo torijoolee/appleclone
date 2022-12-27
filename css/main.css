@@ -17,8 +17,13 @@ a {
 p {
   line-height: 1.6;
 }
+/* nav */
 .global__nav {
   height: 44px;
+  padding: 0 1rem;
+}
+.local__nav {
+  padding: 0 1rem;
 }
 .global__nav__links,
 .local__nav__links {
@@ -45,4 +50,113 @@ p {
 .local__nav__links .product__name {
   font-size: 1.4rem;
   font-weight: 900;
+}
+
+/* section */
+.scroll__section {
+  padding-top: 50vh;
+  margin: 0 1rem;
+}
+#scroll__section_0 h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+.main__message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3em;
+  font-size: 2.5rem;
+  background-color: lightgray;
+
+  margin-bottom: 5px;
+}
+.main__message p {
+  line-height: 1.2;
+  font-weight: bold;
+  text-align: center;
+}
+.description {
+  font-size: 1.2rem;
+  color: #888;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.description strong {
+  font-size: 3rem;
+  float: left;
+  color: black;
+  margin-right: 0.2em;
+  font-weight: bold;
+}
+.main__message small {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+#scroll__section_2 .main__message {
+  font-size: 3.5rem;
+}
+.desc__message {
+  width: 50%;
+}
+.pin {
+  width: 1px;
+  height: 100px;
+  background-color: rgb(29, 29, 31);
+}
+
+.mid__message {
+  padding: 0 1rem;
+  font-size: 2rem;
+  color: #888;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.mid__message strong {
+  color: rgb(29, 29, 31);
+}
+.canvas__caption {
+  max-width: 1000px;
+  font-size: 1.2rem;
+
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  color: #888;
+}
+.mid__message {
+  font-size: 4vw;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  background-color: darksalmon;
+}
+
+@media (min-width: 1024px) {
+  #scroll__section_0 h1 {
+    font-size: 9vw;
+  }
+  .main__message {
+    font-size: 4vw;
+  }
+  .description {
+    font-size: 2rem;
+  }
+  .description strong {
+    font-size: 6rem;
+  }
+  #scroll__section_2 .main__message {
+    font-size: 6vw;
+  }
+  .main__message small {
+    font-size: 2.5vw;
+  }
+  .desc__message {
+    width: 20%;
+  }
 }
