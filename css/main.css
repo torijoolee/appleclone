@@ -67,7 +67,6 @@ p {
   justify-content: center;
   height: 3em;
   font-size: 2.5rem;
-  background-color: lightgray;
 
   margin-bottom: 5px;
 }
@@ -136,6 +135,13 @@ p {
   height: 7rem;
   background-color: darksalmon;
 }
+.sticky__elem {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 
 @media (min-width: 1024px) {
   #scroll__section_0 h1 {
@@ -148,10 +154,10 @@ p {
     font-size: 2rem;
   }
   .description strong {
-    font-size: 6rem;
+    font-size: 5vw;
   }
   #scroll__section_2 .main__message {
-    font-size: 6vw;
+    font-size: 5vw;
   }
   .main__message small {
     font-size: 2.5vw;
