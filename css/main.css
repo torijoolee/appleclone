@@ -21,9 +21,17 @@ p {
 .global__nav {
   height: 44px;
   padding: 0 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 .local__nav {
   padding: 0 1rem;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%;
 }
 .global__nav__links,
 .local__nav__links {
@@ -56,6 +64,7 @@ p {
 .scroll__section {
   padding-top: 50vh;
   margin: 0 1rem;
+  border: 1px solid red;
 }
 #scroll__section_0 h1 {
   font-size: 4rem;
@@ -141,6 +150,13 @@ p {
   top: 0;
   left: 0;
   width: 100%;
+}
+/* body */
+#show__scene_0 #scroll__section_0 .sticky__elem,
+#show__scene_1 #scroll__section_1 .sticky__elem,
+#show__scene_2 #scroll__section_2 .sticky__elem,
+#show__scene_3 #scroll__section_3 .sticky__elem {
+  display: block;
 }
 
 @media (min-width: 1024px) {
