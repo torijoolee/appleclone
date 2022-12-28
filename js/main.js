@@ -44,26 +44,50 @@
       sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
       sceneInfo[i].objs.section.style.height = `${sceneInfo[i].scrollHeight}px`;
     }
+    //현재 스크롤 위치에 맞춰서 현재(활성화) 씬 세팅
+    let totalScrollHeight = 0;
+    //totalScrollHeight와 현재 위치 비교
+    for (let i = 0; i < sceneInfo.length; i++) {
+      totalScrollHeight = totalScrollHeight + sceneInfo[i].scrollHeight;
+      if (totalScrollHeight >= yOffset) {
+        //현재 스크롤 위치보다 토탈 스크롤 값이 같거나 커지면
+        currentScene = i;
+        break;
+      }
+    }
+    document.body.setAttribute("id", `show__scene_${currentScene}`);
   }
+  // 현재 활성화된 창
   function scrollLoop() {
     prevScrollHeight = 0; //스크롤 할 때마다 값 초기화
+    //for(let i=0; i<sceneInfo.length; i++)
+    //네 구간 전체의 합
+
+    //현재 활성화된 씬 0,1,2,3
     for (let i = 0; i < currentScene; i++) {
-      prevScrollHeight = prevScrollHeight + sceneInfo[i].scrollHeight; //네 구간의 전체 스크롤 높이
+      prevScrollHeight = prevScrollHeight + sceneInfo[i].scrollHeight;
+      // console.log(`prevScrollHeight:${prevScrollHeight}`);
     }
+    //증가
     if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
       currentScene++;
+      document.body.setAttribute("id", `show__scene_${currentScene}`);
     }
+    //감소
     if (yOffset < prevScrollHeight) {
-      if (currentScene == 0) return;
+      if (currentScene == 0) return; //브라우저 바운스로 마이너스되는 것 방지
       currentScene--;
+      document.body.setAttribute("id", `show__scene_${currentScene}`);
+      //바뀌는 순간에만 체크해주면 됨
     }
     console.log(currentScene);
+    // document.body.setAttribute("id", `show__scene_${currentScene}`);
   }
 
-  window.addEventListener("resize", setLayout);
   window.addEventListener("scroll", () => {
     yOffset = window.pageYOffset;
     scrollLoop();
   });
-  setLayout();
+  window.addEventListener("resize", setLayout);
+  window.addEventListener("load", setLayout);
 })();

@@ -151,6 +151,9 @@ p {
   left: 0;
   width: 100%;
 }
+.desc__message {
+  width: 50%;
+}
 /* body */
 #show__scene_0 #scroll__section_0 .sticky__elem,
 #show__scene_1 #scroll__section_1 .sticky__elem,
