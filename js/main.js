@@ -13,7 +13,18 @@
       type: "sticky",
       heightNum: 5,
       scrollHeight: 0,
-      objs: { section: document.querySelector("#scroll__section_0") },
+      objs: {
+        //html dom객체 요소들
+        section: document.querySelector("#scroll__section_0"),
+        messagaA: document.querySelector("#scroll__section_0 .main__message.a"),
+        messagaB: document.querySelector("#scroll__section_0 .main__message.b"),
+        messagaC: document.querySelector("#scroll__section_0 .main__message.c"),
+        messagaD: document.querySelector("#scroll__section_0 .main__message.d"),
+      },
+      values: {
+        //배열로 투명도[시작값,끝값] 값에 해당
+        messageA_opacity: [0, 1],
+      },
     },
     //1
     {
@@ -57,16 +68,41 @@
     }
     document.body.setAttribute("id", `show__scene_${currentScene}`);
   }
+  function calcValues(values, currentYOffset) {
+    let rv;
+    let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+    rv = scrollRatio * (values[1] - values[0] + values[0]);
+    return rv;
+  }
+
+  //활성화된 창의 해당 요소들만 애니메이션
+  function playAnimaiton() {
+    const objs = sceneInfo[currentScene].objs;
+    const values = sceneInfo[currentScene].values;
+    const currentYOffset = yOffset - prevScrollHeight;
+
+    console.log(currentScene, currentYOffset);
+    switch (currentScene) {
+      case 0:
+        let messageA_opacity_0 = values.messageA_opacity[0];
+        let messageA_opacity_1 = values.messageA_opacity[1];
+
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+    }
+  }
+
   // 현재 활성화된 창
   function scrollLoop() {
-    prevScrollHeight = 0; //스크롤 할 때마다 값 초기화
-    //for(let i=0; i<sceneInfo.length; i++)
-    //네 구간 전체의 합
+    prevScrollHeight = 0;
 
-    //현재 활성화된 씬 0,1,2,3
     for (let i = 0; i < currentScene; i++) {
       prevScrollHeight = prevScrollHeight + sceneInfo[i].scrollHeight;
-      // console.log(`prevScrollHeight:${prevScrollHeight}`);
     }
     //증가
     if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
@@ -80,8 +116,8 @@
       document.body.setAttribute("id", `show__scene_${currentScene}`);
       //바뀌는 순간에만 체크해주면 됨
     }
-    console.log(currentScene);
-    // document.body.setAttribute("id", `show__scene_${currentScene}`);
+
+    playAnimaiton();
   }
 
   window.addEventListener("scroll", () => {
