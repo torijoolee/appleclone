@@ -76,6 +76,7 @@ p {
   justify-content: center;
   height: 3em;
   font-size: 2.5rem;
+  opacity: 0;
 
   margin-bottom: 5px;
 }

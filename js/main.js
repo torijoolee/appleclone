@@ -6,6 +6,7 @@
   let yOffset = 0; //window.pageYOffset을 대신할 변수
   let prevScrollHeight = 0; //현재 스크롤 위치 (yOffset)보다 이전에 위치한 스크롤 섹션 높이값의 합
   let currentScene = 0; //눈앞에 보고있는 (현재 활성화된) 씬
+  let enterNewScene = false; //새로운 씬이 시작된 순간
 
   const sceneInfo = [
     //0
@@ -69,10 +70,11 @@
     document.body.setAttribute("id", `show__scene_${currentScene}`);
   }
   function calcValues(values, currentYOffset) {
-    let rv;
+    let returnValue;
     let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
-    rv = scrollRatio * (values[1] - values[0] + values[0]);
-    return rv;
+    returnValue = scrollRatio * (values[1] - values[0] + values[0]);
+    return returnValue;
+    //기본적으로 리턴해주는 값이 있어야 계산된 결과값을 가져다 사용 가능
   }
 
   //활성화된 창의 해당 요소들만 애니메이션
@@ -81,11 +83,15 @@
     const values = sceneInfo[currentScene].values;
     const currentYOffset = yOffset - prevScrollHeight;
 
-    console.log(currentScene, currentYOffset);
+    console.log(currentScene);
     switch (currentScene) {
       case 0:
-        let messageA_opacity_0 = values.messageA_opacity[0];
-        let messageA_opacity_1 = values.messageA_opacity[1];
+        let messageA_opacity_in = calcValues(
+          values.messageA_opacity,
+          currentYOffset
+        );
+        objs.messagaA.style.opacity = messageA_opacity_in;
+        console.log(messageA_opacity_in);
 
         break;
       case 1:
@@ -99,6 +105,7 @@
 
   // 현재 활성화된 창
   function scrollLoop() {
+    enterNewScene = false;
     prevScrollHeight = 0;
 
     for (let i = 0; i < currentScene; i++) {
@@ -106,17 +113,21 @@
     }
     //증가
     if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
+      enterNewScene = true;
+
       currentScene++;
+
       document.body.setAttribute("id", `show__scene_${currentScene}`);
     }
     //감소
     if (yOffset < prevScrollHeight) {
+      enterNewScene = true;
       if (currentScene == 0) return; //브라우저 바운스로 마이너스되는 것 방지
       currentScene--;
       document.body.setAttribute("id", `show__scene_${currentScene}`);
       //바뀌는 순간에만 체크해주면 됨
     }
-
+    if (enterNewScene) return;
     playAnimaiton();
   }
 
