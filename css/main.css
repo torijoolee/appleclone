@@ -62,9 +62,10 @@ p {
 
 /* section */
 .scroll__section {
-  padding-top: 50vh;
+  padding-top: 33vh;
   margin: 0 1rem;
   border: 1px solid red;
+  /* top: 10vh; */
 }
 #scroll__section_0 h1 {
   font-size: 4rem;
@@ -73,6 +74,7 @@ p {
 .main__message {
   display: flex;
   align-items: center;
+
   justify-content: center;
   height: 3em;
   font-size: 2.5rem;
@@ -148,7 +150,7 @@ p {
 .sticky__elem {
   display: none;
   position: fixed;
-  top: 0;
+  /* top: 0; */
   left: 0;
   width: 100%;
 }
