@@ -1,0 +1,13 @@
+@media screen and (max-width: 1599px) {
+  .inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .inner {
+  }
+}
+@media screen and (max-width: 1024px) {
+}

@@ -1,0 +1,42 @@
+/* 삼각형 만들기 */
+.container {
+  width: 200px;
+  height: 200px;
+  border: 4px solid black;
+  position: relative;
+  margin: 50px;
+}
+.arrow {
+  width: 40px;
+  height: 20px;
+  /* border: 4px solid red; */
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  overflow: hidden;
+}
+.arrow::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 4px solid green;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  background-color: white;
+  transform: rotate(45deg);
+  /* 회전 기준점 변경 */ /* x축의 0 y축의 0 */
+  transform-origin: 0 0;
+}
+/* 아래가 뾰족한 삼각형 만들기 */
+.arrow::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 9px solid black;
+  transform: translateY(65%);
+}
